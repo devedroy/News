@@ -2,7 +2,6 @@ package com.example.news.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -32,19 +31,16 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
 
     @Override
     public void onBindViewHolder(@NonNull HomeScreenViewHolder holder, int position) {
-        holder.newsLayoutBinding.tvNewsTitle.setText("Test Title");
+        holder.newsLayoutBinding.tvNewsTitle.setText(newsList.get(position).getArticles().get(position).getTitle());
 
-        holder.newsLayoutBinding.tvNewsTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     @Override
     public int getItemCount() {
-        return newsList.size();
+        if (newsList != null)
+            return newsList.size();
+        else
+            return 0;
     }
 
     public class HomeScreenViewHolder extends RecyclerView.ViewHolder {
